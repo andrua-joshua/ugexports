@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ugexports/routes/clearings_screen.dart';
-import 'package:ugexports/routes/exporters_with_less_quantity.dart';
-import 'package:ugexports/routes/farmers_and_suppliers.dart';
-import 'package:ugexports/routes/flight_agents.dart';
-import 'package:ugexports/routes/home_screen.dart';
-import 'package:ugexports/routes/product_supplier_screen.dart';
+import 'package:ugexports/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +17,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const productSupplierScreen(),
+      initialRoute: RouteGenerator.home,
+      onGenerateRoute: RouteGenerator.generateRoute,
+      //home: const productSupplierScreen(),
     );
   }
 }
