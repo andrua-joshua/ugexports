@@ -19,6 +19,37 @@ class exportersWithLessQScreen extends StatelessWidget {
           style: TextStyle(
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
         ),
+
+        actions: [
+          TextButton(
+            onPressed: (){
+              showDialog(context: context, 
+                      builder: (BuildContext context){
+                        return AlertDialog(
+                          title: const Text("ADD EXPORTERS WITH LESS QUANTITY"),
+                          content: SingleChildScrollView(child:sharedFourthSetDialogWidget
+                          (firstTitle: "PRODUCTION NAME", 
+                          secondTitle: "LESS BY (KGS)", 
+                          thirdTitle: "CONTACT", 
+                          submissionFunc: (val1,val2,val3){})),
+                          actions: [
+                            SizedBox(
+                              child: TextButton(
+                                onPressed: ()=>Navigator.pop(context), 
+                                child: const Text("Close", style: TextStyle(color: Colors.red),)),
+                            )
+                          ],
+                        );
+                      });
+            }, 
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.black,
+              shape: BoxShape.circle),
+              padding: const EdgeInsets.all(1),
+              child: const Icon(Icons.add, color: Colors.white,),
+            ))
+        ],
       ),
       body: SafeArea(
           child: SingleChildScrollView(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ugexports/routes.dart';
 import 'package:ugexports/widgets/home_screen_widget.dart';
+import 'package:ugexports/widgets/widgets.dart';
 
 //this is for the home screen of the appliction
 //ignore:camel_case_types
@@ -33,8 +34,10 @@ class homeScreen extends StatelessWidget {
                 crossAxisSpacing: 10),
             delegate: SliverChildListDelegate.fixed([
               homeItemWidget(
-                  callback: () => Navigator.pushNamed(
-                      context, RouteGenerator.clearingsscreen),
+                  callback: (){
+                      Navigator.pushNamed(
+                      context, RouteGenerator.clearingsscreen);
+                      },
                   title: "CLEARING AGENTS",
                   price: "4001",
                   image: "assets/images/clearing5.png"),
@@ -44,7 +47,7 @@ class homeScreen extends StatelessWidget {
                   price: "8000",
                   image: "assets/images/flight.png"),
               homeItemWidget(
-                  callback: ()=> Navigator.pushNamed(context, RouteGenerator.suppliersscreen),
+                  callback: ()=> Navigator.pushNamed(context, RouteGenerator.farmersAndSuppliersscreen),
                   title: "FARMERS & SUPPLIERS",
                   price: "5150",
                   image: "assets/images/farmer.png"),
@@ -59,7 +62,7 @@ class homeScreen extends StatelessWidget {
                   price: "5051",
                   image: "assets/images/packaging.png"),
               homeItemWidget(
-                  callback: () {},
+                  callback: ()=> Navigator.pushNamed(context, RouteGenerator.confirmedSpacescreen),
                   title: "CONFIRMED SPACE & AWB",
                   price: "5051",
                   image: "assets/images/trolly.png"),

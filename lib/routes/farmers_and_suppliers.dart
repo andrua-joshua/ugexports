@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ugexports/routes.dart';
 
 //ignore:camel_case_types
 class farmersAndSuppliersScreen extends StatelessWidget {
@@ -60,7 +61,7 @@ class farmersAndSuppliersScreen extends StatelessWidget {
                           color: const Color.fromARGB(255, 235, 232, 232)),
                       padding: const EdgeInsets.all(5),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: ()=>Navigator.pushNamed(context, RouteGenerator.suppliersscreen),
                         child: Text(suppliers[index],textAlign: TextAlign.center,),
                       ),
                     )),
