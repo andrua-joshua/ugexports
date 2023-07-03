@@ -43,11 +43,13 @@ class packagingMaterialsScreen extends StatelessWidget {
                       });
             }, 
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.black,
-              shape: BoxShape.circle),
+                borderRadius: BorderRadius.circular(7)
+              //shape: BoxShape.circle
+              ),
               padding: const EdgeInsets.all(1),
-              child: const Icon(Icons.add, color: Colors.white,),
+              child: const Text("Add", style: TextStyle(color: Colors.white),),
             ))
         ],
       ),
