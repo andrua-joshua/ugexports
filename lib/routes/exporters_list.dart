@@ -66,21 +66,21 @@ class exportersScreen extends StatelessWidget {
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedTwoColumnDataWidget(
-                    callback: () {},
+                    callback: ()=>func(context),
                     firstData: "JACOB FOODS",
                   ),
                 ),
                 Container(
                   color: Colors.white,
                   child: sharedTwoColumnDataWidget(
-                    callback: () {},
+                    callback: () =>func(context),
                     firstData: "KK FOODS",
                   ),
                 ),
               Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedTwoColumnDataWidget(
-                    callback: () {},
+                    callback: ()=>func(context),
                     firstData: "LYN ORGANIC EXPORTERS",
                   ),
                 ),
@@ -88,5 +88,29 @@ class exportersScreen extends StatelessWidget {
           )),
       )),
     );
+  }
+
+  void func(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Contact Payment"),
+            content: const SingleChildScrollView(
+                child: paymentDialogWidget(
+              amount: 590,
+            )),
+            actions: [
+              SizedBox(
+                child: TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                      "Close",
+                      style: TextStyle(color: Colors.red),
+                    )),
+              )
+            ],
+          );
+        });
   }
 }

@@ -64,26 +64,50 @@ class clearingScreen extends StatelessWidget {
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "AURTHUR",secondData: "K&A",),
+                    callback: ()=>func(context),firstData: "AURTHUR",secondData: "K&A",),
                 ),
                 Container(
                   color: Colors.white,
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "NUKE",secondData: "Pexel patel",),
+                    callback: ()=>func(context),firstData: "NUKE",secondData: "Pexel patel",),
                 ),
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "NOTRON",secondData: "K&A",),
+                    callback: ()=>func(context),firstData: "NOTRON",secondData: "K&A",),
                 ),
                 Container(
                   color: Colors.white,
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "AURTHUR",secondData: "K&A",),
+                    callback: ()=>func(context),firstData: "AURTHUR",secondData: "K&A",),
                 )
               ],
             )),
       )),
     );
+  }
+
+  void func(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Contact Payment"),
+            content: const SingleChildScrollView(
+                child: paymentDialogWidget(
+              amount: 476,
+            )),
+            actions: [
+              SizedBox(
+                child: TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                      "Close",
+                      style: TextStyle(color: Colors.red),
+                    )),
+              )
+            ],
+          );
+        });
   }
 }

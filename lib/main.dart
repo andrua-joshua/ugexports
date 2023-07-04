@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteGenerator.home,
+      initialRoute: "o",//RouteGenerator.home,
       onGenerateRoute: RouteGenerator.generateRoute,
       //home: const productSupplierScreen(),
     );

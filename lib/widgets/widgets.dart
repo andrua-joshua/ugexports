@@ -860,29 +860,27 @@ class _sharedThirdSetDialogWidgetState
                               borderRadius: BorderRadius.circular(10)),
                           padding: const EdgeInsets.all(5),
                           child: TextFormField(
-                            controller:_datePickerController,
+                            controller: _datePickerController,
                             decoration: const InputDecoration(
-                              icon: Icon(Icons.calendar_today),
-                              border: InputBorder.none,
-                              hintText: "Enter Date"
-                            ),
+                                icon: Icon(Icons.calendar_today),
+                                border: InputBorder.none,
+                                hintText: "Enter Date"),
                             readOnly: true,
-                            onTap: () async{
+                            onTap: () async {
                               DateTime? pickedDate = await showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime.now(),
-                                lastDate: DateTime(2101)
-                              );
-                            
-                            if(pickedDate!=null){
-                              String formattedDate = DateFormat("yyyy-MM-dd").format(pickedDate);
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime.now(),
+                                  lastDate: DateTime(2101));
 
-                              setState(() {
-                                _datePickerController.text = formattedDate;
-                              });
-                            }
+                              if (pickedDate != null) {
+                                String formattedDate =
+                                    DateFormat("yyyy-MM-dd").format(pickedDate);
 
+                                setState(() {
+                                  _datePickerController.text = formattedDate;
+                                });
+                              }
                             },
                           )),
                     ),
@@ -974,43 +972,27 @@ class _sharedThirdSetDialogWidgetState
   }
 }
 
-
-
-
-
 //ignore:camel_case_types
-class addWidget extends StatelessWidget{
+class addWidget extends StatelessWidget {
   final String text;
   final Function() callback;
-  const addWidget({
-    required this.text,
-    required this.callback,
-    super.key
-  });
+  const addWidget({required this.text, required this.callback, super.key});
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return SizedBox(
-      child:TextButton(
-        onPressed: callback,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.circular(10)
-          ),
-          child:Text(text, style: const TextStyle(color: Colors.white),),)
-      )
-    );
+        child: TextButton(
+            onPressed: callback,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.black, borderRadius: BorderRadius.circular(10)),
+              child: Text(
+                text,
+                style: const TextStyle(color: Colors.white),
+              ),
+            )));
   }
 }
-
-
-
-
-
-
-
-
 
 //ignore:camel_case_types
 class sharedFourthSetDialogWidget extends StatefulWidget {
@@ -1158,7 +1140,6 @@ class _sharedFourthSetDialogWidgetState
                         ),
                       ),
                     ),
-                    
                     const SizedBox(
                       height: 10,
                     ),
@@ -1187,6 +1168,92 @@ class _sharedFourthSetDialogWidgetState
               )
             ],
           )),
+    );
+  }
+}
+
+//ignore:camel_case_types
+class paymentDialogWidget extends StatefulWidget {
+  final int amount;
+  const paymentDialogWidget({required this.amount, super.key});
+
+  @override
+  _paymentDialogWidgetState createState() => _paymentDialogWidgetState();
+}
+
+//ignore:camel_case_types
+class _paymentDialogWidgetState extends State<paymentDialogWidget> {
+  late final TextEditingController _contactController;
+
+  @override
+  void initState() {
+    super.initState();
+    _contactController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _contactController.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Divider(thickness: 1, color: Colors.grey),
+        const SizedBox(
+          height: 10,
+        ),
+        const Text("Enter Phone Number:",
+            style: TextStyle(color: Colors.black)),
+        Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: Colors.grey),
+            padding: const EdgeInsets.all(1),
+            child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                padding: const EdgeInsets.all(3),
+                child: TextField(
+                    controller: _contactController,
+                    maxLength: 10,
+                    keyboardType: TextInputType.phone,
+                    decoration: const InputDecoration(
+                        hintText: "Enter your contact",
+                        border: InputBorder.none,
+                        counterText: "")))),
+        const SizedBox(
+          height: 0,
+        ),
+        Text(
+          "Amount : " + widget.amount.toString() + " UGX",
+          style: const TextStyle(color: Colors.grey),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Center(
+            child: TextButton(
+                onPressed: () {},
+                child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.blueAccent),
+                    padding: const EdgeInsets.all(3),
+                    child: const Text(
+                      "Pay To View",
+                      style: TextStyle(color: Colors.black),
+                    )))),
+        const SizedBox(
+          height: 10,
+        ),
+        const Divider(thickness: 1, color: Colors.grey),
+      ],
     );
   }
 }
