@@ -12,6 +12,7 @@ import 'package:ugexports/routes/flight_agents.dart';
 import 'package:ugexports/routes/home_screen.dart';
 import 'package:ugexports/routes/paockaging_material_and_track_drivers.dart';
 import 'package:ugexports/routes/product_supplier_screen.dart';
+import 'package:ugexports/web_version.dart';
 
 class RouteGenerator{
   static const String home="/";
@@ -50,6 +51,6 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (context) => const packagingMaterialsScreen());
     
       default:
-        return MaterialPageRoute(builder: (context) => const homeScreen());
+        return MaterialPageRoute(builder: (context) => const webViewContent());
     }}
 }

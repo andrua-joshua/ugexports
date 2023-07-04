@@ -41,11 +41,13 @@ class flightScreen extends StatelessWidget {
                       });
             }, 
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.black,
-              shape: BoxShape.circle),
+                borderRadius: BorderRadius.circular(7)
+              //shape: BoxShape.circle
+              ),
               padding: const EdgeInsets.all(1),
-              child: const Icon(Icons.add, color: Colors.white,),
+              child: const Text("Add", style: TextStyle(color: Colors.white),),
             ))
         ],
       ),
@@ -62,46 +64,70 @@ class flightScreen extends StatelessWidget {
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "NASSER",secondData: "AIR ARABIA",),
+                    callback: ()=>func(context),firstData: "NASSER",secondData: "AIR ARABIA",),
                 ),
                 Container(
                   color: Colors.white,
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "SHEEBA",secondData: "AIR ARABIA",),
+                    callback: ()=>func(context),firstData: "SHEEBA",secondData: "AIR ARABIA",),
                 ),
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "JACKSON KAMUSIIME",secondData: "EMIRATES",),
+                    callback: ()=>func(context),firstData: "JACKSON KAMUSIIME",secondData: "EMIRATES",),
                 ),
                 Container(
                   color: Colors.white,
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "VICTORIA",secondData: "FLY DUBAI",),
+                    callback: ()=>func(context),firstData: "VICTORIA",secondData: "FLY DUBAI",),
                 ),
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "NASSER",secondData: "AIR ARABIA",),
+                    callback: ()=>func(context),firstData: "NASSER",secondData: "AIR ARABIA",),
                 ),
                 Container(
                   color: Colors.white,
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "SHEEBA",secondData: "AIR ARABIA",),
+                    callback: ()=>func(context),firstData: "SHEEBA",secondData: "AIR ARABIA",),
                 ),
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "JACKSON KAMUSIIME",secondData: "EMIRATES",),
+                    callback: ()=>func(context),firstData: "JACKSON KAMUSIIME",secondData: "EMIRATES",),
                 ),
                 Container(
                   color: Colors.white,
                   child: sharedThreedColumnDataWidget(
-                    callback: (){},firstData: "VICTORIA",secondData: "FLY DUBAI",),
+                    callback: ()=>func(context),firstData: "VICTORIA",secondData: "FLY DUBAI",),
                 )
               ],
             )),
       )),
     );
+  }
+
+  void func(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Contact Payment"),
+            content: const SingleChildScrollView(
+                child: paymentDialogWidget(
+              amount: 690,
+            )),
+            actions: [
+              SizedBox(
+                child: TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                      "Close",
+                      style: TextStyle(color: Colors.red),
+                    )),
+              )
+            ],
+          );
+        });
   }
 }

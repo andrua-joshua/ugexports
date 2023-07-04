@@ -43,11 +43,13 @@ class exportersScreen extends StatelessWidget {
                       });
             }, 
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.black,
-              shape: BoxShape.circle),
+                borderRadius: BorderRadius.circular(7)
+              //shape: BoxShape.circle
+              ),
               padding: const EdgeInsets.all(1),
-              child: const Icon(Icons.add, color: Colors.white,),
+              child: const Text("Add", style: TextStyle(color: Colors.white),),
             ))
         ],
       ),
@@ -64,21 +66,21 @@ class exportersScreen extends StatelessWidget {
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedTwoColumnDataWidget(
-                    callback: () {},
+                    callback: ()=>func(context),
                     firstData: "JACOB FOODS",
                   ),
                 ),
                 Container(
                   color: Colors.white,
                   child: sharedTwoColumnDataWidget(
-                    callback: () {},
+                    callback: () =>func(context),
                     firstData: "KK FOODS",
                   ),
                 ),
               Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedTwoColumnDataWidget(
-                    callback: () {},
+                    callback: ()=>func(context),
                     firstData: "LYN ORGANIC EXPORTERS",
                   ),
                 ),
@@ -86,5 +88,29 @@ class exportersScreen extends StatelessWidget {
           )),
       )),
     );
+  }
+
+  void func(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Contact Payment"),
+            content: const SingleChildScrollView(
+                child: paymentDialogWidget(
+              amount: 590,
+            )),
+            actions: [
+              SizedBox(
+                child: TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                      "Close",
+                      style: TextStyle(color: Colors.red),
+                    )),
+              )
+            ],
+          );
+        });
   }
 }

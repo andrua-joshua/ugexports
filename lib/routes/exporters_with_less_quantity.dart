@@ -43,11 +43,13 @@ class exportersWithLessQScreen extends StatelessWidget {
                       });
             }, 
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.black,
-              shape: BoxShape.circle),
+                borderRadius: BorderRadius.circular(7)
+              //shape: BoxShape.circle
+              ),
               padding: const EdgeInsets.all(1),
-              child: const Icon(Icons.add, color: Colors.white,),
+              child: const Text("Add", style: TextStyle(color: Colors.white),),
             ))
         ],
       ),
@@ -71,7 +73,7 @@ class exportersWithLessQScreen extends StatelessWidget {
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedThreedColumnDataWidget(
-                    callback: () {},
+                    callback: ()=> func(context),
                     firstData: "AVOCADO",
                     secondData: "300 KGS",
                   ),
@@ -79,7 +81,7 @@ class exportersWithLessQScreen extends StatelessWidget {
                 Container(
                   color: Colors.white,
                   child: sharedThreedColumnDataWidget(
-                    callback: () {},
+                    callback: () =>func(context),
                     firstData: "MANGOES",
                     secondData: "25 KGS",
                   ),
@@ -87,7 +89,7 @@ class exportersWithLessQScreen extends StatelessWidget {
                 Container(
                   color: const Color.fromARGB(255, 228, 225, 225),
                   child: sharedThreedColumnDataWidget(
-                    callback: () {},
+                    callback: ()=>func(context),
                     firstData: "VANILA",
                     secondData: "2 KGS",
                   ),
@@ -97,5 +99,30 @@ class exportersWithLessQScreen extends StatelessWidget {
             )),
       )),
     );
+  }
+
+
+  void func(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Contact Payment"),
+            content: const SingleChildScrollView(
+                child: paymentDialogWidget(
+              amount: 450,
+            )),
+            actions: [
+              SizedBox(
+                child: TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                      "Close",
+                      style: TextStyle(color: Colors.red),
+                    )),
+              )
+            ],
+          );
+        });
   }
 }
